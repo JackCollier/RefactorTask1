@@ -1,0 +1,18 @@
+<div class="container mt-4">
+    <div class="row">
+      <div class="col">
+        <h3 class="text-center">Upcoming Events</h3>
+        <ul class="list-group mt-4">
+          <li *ngFor="let event of eventService.events$ | async" class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+              <strong>{{ event.name }}</strong> - {{ event.date }}
+              <p class="text-muted">{{ getCountdown(event.date) }}</p>
+            </div>
+            <button class="btn btn-danger btn-sm" (click)="removeEvent(event)">Remove</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  
