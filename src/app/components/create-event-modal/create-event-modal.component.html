@@ -1,0 +1,25 @@
+<div *ngIf="showModal" class="modal fade show d-block" tabindex="-1" role="dialog" aria-labelledby="addDateModalLabel" aria-hidden="true" style="background: rgba(0, 0, 0, 0.5);">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addDateModalLabel">Add New Event</h5>
+        <button type="button" class="close" (click)="closeModal()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="addEvent()">
+          <div class="form-group">
+            <label for="eventName">Event Name</label>
+            <input type="text" id="eventName" class="form-control" [(ngModel)]="newEvent.name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="eventDate">Event Date</label>
+            <input type="date" id="eventDate" class="form-control" [(ngModel)]="newEvent.date" name="date" required />
+          </div>
+          <button type="submit" class="btn btn-primary">Add Event</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

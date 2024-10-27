@@ -6,7 +6,7 @@ import { Event, EventService } from '../../services/event.service';
     templateUrl: 'event-display.component.html'
 })
 
-export class EventDisplay implements OnInit {
+export class EventDisplayComponent implements OnInit {
   events: Event[] = [];
 
   constructor(private eventService: EventService) {}

@@ -12,7 +12,9 @@ export interface Event {
 })
 export class EventService {
     private eventsSubject = new BehaviorSubject<Event[]>([]);
+    private showModalSubject = new BehaviorSubject<boolean>(false);
     events$ = this.eventsSubject.asObservable();
+    showModal$ = this.showModalSubject.asObservable();
   
     addEvent(event: Event) {
       const currentEvents = this.eventsSubject.getValue();
@@ -22,5 +24,13 @@ export class EventService {
     removeEvent(eventToRemove: Event) {
       const updatedEvents = this.eventsSubject.getValue().filter(event => event !== eventToRemove);
       this.eventsSubject.next(updatedEvents);
+    }
+    
+    openModal() {
+      this.showModalSubject.next(true);
+    }
+  
+    closeModal() {
+      this.showModalSubject.next(false);
     }
 }
