@@ -26,6 +26,7 @@ export class CreateEventModalComponent implements OnInit  {
     if (this.newEvent.name && this.newEvent.date) {
       this.eventService.addEvent(this.newEvent);
       this.newEvent = { name: '', date: '' };
+      this.eventService.closeModal();
     }
   }
 
