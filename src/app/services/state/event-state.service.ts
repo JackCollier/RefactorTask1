@@ -54,7 +54,7 @@ export class EventStateService {
       next: () => {
         const updatedEvents = this.eventsSubject
           .getValue()
-          .filter((event) => event.id !== event.id);
+          .filter((eventFromState) => eventFromState.id !== event.id);
         this.eventsSubject.next(updatedEvents);
         this.errorMessageSubject.next('');
       },

@@ -13,10 +13,7 @@ import { EventApiService } from '../../services/api/event-api.service';
   imports: [CommonModule],
 })
 export class EventDisplayComponent {
-  constructor(
-    public eventStateService: EventStateService,
-    private eventApiService: EventApiService
-  ) {
+  constructor(public eventStateService: EventStateService) {
     setInterval(() => {}, 1000);
   }
 
