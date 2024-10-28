@@ -10,24 +10,27 @@ import { CommonModule } from '@angular/common';
 })
 
 export class EventDisplayComponent  {
-  constructor(public eventService: EventService) {}
+  constructor(public eventService: EventService) {
+    setInterval(() => {}, 1000); 
+}
 
   getCountdown(eventDate: string): string {
     const currentDate = new Date();
     const targetDate = new Date(eventDate);
-
     const difference = targetDate.getTime() - currentDate.getTime();
 
     if (difference <= 0) {
-      return 'Event has passed';
+        return 'Event has passed';
     }
 
     const days = Math.floor(difference / (1000 * 60 * 60 * 24));
     const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-    return `${days} days, ${hours} hours, and ${minutes} minutes remaining`;
-  }
+    return `${days}d ${hours}h ${minutes}m ${seconds}s`;
+}
+
 
   removeEvent(event: Event) {
     this.eventService.removeEvent(event)
