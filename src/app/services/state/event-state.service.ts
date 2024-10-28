@@ -28,6 +28,7 @@ export class EventStateService {
     this.eventApiService.getEvents().subscribe({
       next: (events) => {
         this.eventsSubject.next(events);
+        this.errorMessageSubject.next('');
       },
       error: () => {
         this.errorMessageSubject.next('Error Retrieving Events');
@@ -40,6 +41,7 @@ export class EventStateService {
       next: (event) => {
         const currentEvents = this.eventsSubject.getValue();
         this.eventsSubject.next([...currentEvents, event]);
+        this.errorMessageSubject.next('');
       },
       error: () => {
         this.errorMessageSubject.next('Error Creating Event');
@@ -47,13 +49,14 @@ export class EventStateService {
     });
   }
 
-  removeEvent(event: Event) {
+  deleteEvent(event: Event) {
     this.eventApiService.deleteEvent(event).subscribe({
       next: () => {
         const updatedEvents = this.eventsSubject
           .getValue()
-          .filter((event) => event !== event);
+          .filter((event) => event.id !== event.id);
         this.eventsSubject.next(updatedEvents);
+        this.errorMessageSubject.next('');
       },
       error: () => {
         this.errorMessageSubject.next('Error Deleting Event');

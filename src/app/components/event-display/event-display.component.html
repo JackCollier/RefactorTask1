@@ -2,6 +2,14 @@
   <div class="row">
     <div class="col">
       <h3 class="text-center">Upcoming Events</h3>
+
+      <div
+        *ngIf="eventStateService.errorMessage$ | async as errorMessage"
+        class="alert alert-danger"
+      >
+        {{ errorMessage }}
+      </div>
+
       <ul class="list-group mt-4">
         <li
           *ngFor="let event of eventStateService.events$ | async"
@@ -12,7 +20,7 @@
             {{ event.date | date : "medium" }}
             <p class="text-muted">{{ getCountdown(event.date) }}</p>
           </div>
-          <button class="btn btn-danger btn-sm" (click)="removeEvent(event)">
+          <button class="btn btn-danger btn-sm" (click)="deleteEvent(event)">
             Remove
           </button>
         </li>

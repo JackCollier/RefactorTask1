@@ -39,7 +39,7 @@ export class EventDisplayComponent {
     return `${days}d ${hours}h ${minutes}m ${seconds}s`;
   }
 
-  removeEvent(event: Event) {
-    this.eventStateService.removeEvent(event);
+  deleteEvent(event: Event) {
+    this.eventStateService.deleteEvent(event);
   }
 }
