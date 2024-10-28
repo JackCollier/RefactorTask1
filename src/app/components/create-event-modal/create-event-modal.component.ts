@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Event, EventService } from '../../services/event.service';
+import { Event, EventStateService } from '../../services/state/event-state.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
@@ -14,7 +14,7 @@ export class CreateEventModalComponent implements OnInit  {
   showModal : boolean = false;
   newEvent: Event = { name: '', date: '' };
 
-  constructor(private eventService: EventService) {}
+  constructor(private eventService: EventStateService) {}
 
   ngOnInit() {
     this.eventService.showModal$.subscribe(isVisible => {
