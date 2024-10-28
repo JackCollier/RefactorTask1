@@ -1,6 +1,6 @@
-## Databse
+## Database
 
-run `json-server --watch db.json`
+run `json-server --watch db.json` // `npx json-server --watch db.json`
 
 # CountdownCompnaion
 
